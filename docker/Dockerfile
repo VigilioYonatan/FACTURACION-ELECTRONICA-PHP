@@ -10,12 +10,13 @@ RUN apt-get update && \
     libzip-dev \
     wget \
     git \
-    unzip \
+    unzip \ 
+    libxml2-dev \
     -y --no-install-recommends
 
 # Install PHP Extensions
-RUN docker-php-ext-install zip pdo_mysql
-
+RUN docker-php-ext-install zip pdo_mysql soap
+ 
 # RUN pecl install -o -f xdebug-3.1.3 \
 #     && rm -rf /tmp/pear
 

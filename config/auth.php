@@ -14,6 +14,7 @@ return [
     */
 
     'defaults' => [
+    // ONLY WEB when you WEB. if only api when you api . if both web
         'guard' => 'web',
         'passwords' => 'users',
     ],
@@ -38,6 +39,9 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'users',
+        ],'api' => [
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
     ],
