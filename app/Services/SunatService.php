@@ -1,7 +1,6 @@
 <?php
 namespace App\Services;
 
-use App\Models\Company as ModelsCompany;
 use DateTime;
 use Greenter\Api;
 use Greenter\Model\Client\Client;
@@ -23,22 +22,42 @@ use Greenter\Report\HtmlReport;
 use Greenter\Report\Resolver\DefaultTemplateResolver;
 use Greenter\See;
 use Greenter\Ws\Services\SunatEndpoints;
-use Illuminate\Support\Facades\Storage;
 
 class SunatService
 {
+    //  const companySchema ={
+    //     ruc,
+    //     razonSocial,
+    //     nombreComercial,
+    //     sol_user,
+    //     sol_pass,
+    //     // only guia de remision
+    //     // client_id: nullable(string()),
+    //     // client_secret: nullable(string()),
+    //     production,
+    // address:address
+    // }
+    //  const addressSchem
+    //     ubigeo,
+    //     departamento,
+    //     provincia,
+    //     distrito,
+    //     urbanizacion,
+    //     direccion,
+    //     codLocal,
+    // };
     public function getSee($company)
     {
         $see = new See();
         // find and get certficate
-        $see->setCertificate(Storage::get("companies/YTAEpxIlepIdYmF8ICio9gNfYejUKoYkvlrHjr4U.txt"));
-        $see->setService($company->production ? SunatEndpoints::FE_PRODUCCION : SunatEndpoints::FE_BETA);
-        $see->setClaveSOL($company->ruc, $company->sol_user, $company->sol_pass);
+        $see->setCertificate(base64_decode($company["certificado"]));
+        $see->setService($company["production"] ? SunatEndpoints::FE_PRODUCCION : SunatEndpoints::FE_BETA);
+        $see->setClaveSOL($company["ruc"], $company["sol_user"], $company["sol_pass"]);
         return $see;
     }
     public function getSeeApi($company)
     {
-        $api = new Api($company->production ? [
+        $api = new Api($company["production"] ? [
             "auth" => "https://api-seguridad.sunat.gob.pe/v1",
             "cpe" => "https://api-cpe.sunat.gob.pe/v1"
         ] : [
@@ -52,13 +71,13 @@ class SunatService
             "cache" => false
         ])
             ->setApiCredentials(
-                $company->production ? $company->client_id : "test-85e5b0ae-255c-4891-a595-0b98c65c9854",
-                $company->production ? $company->client_secret : "test-Hty/M6QshYvPgItX2P0+Kw=="
+                $company["production"] ? $company["client_id"] : "test-85e5b0ae-255c-4891-a595-0b98c65c9854",
+                $company["production"] ? $company["client_secret"] : "test-Hty/M6QshYvPgItX2P0+Kw=="
             )->setClaveSOL(
-                $company->ruc,
-                $company->production ? $company->sol_user : "MODDATOS",
-                $company->production ? $company->sol_pass : "MODDATOS"
-            )->setCertificate(Storage::get("companies/YTAEpxIlepIdYmF8ICio9gNfYejUKoYkvlrHjr4U.txt"));
+                $company["ruc"],
+                $company["production"] ? $company["sol_user"] : "MODDATOS",
+                $company["production"] ? $company["sol_pass"] : "MODDATOS"
+            )->setCertificate(base64_decode($company["certificado"]));
         return $api;
     }
 
@@ -313,26 +332,38 @@ class SunatService
     }
 
 
-    public function getHtmlReport($invoice)
+    public function getHtmlReport($invoice, $company, $type)
     {
-        $report = new HtmlReport();
-        $resolver = new DefaultTemplateResolver();
-        $report->setTemplate($resolver->getTemplate($invoice));
+        $report = null;
+        if ($type === "ticket") {
+            $twigOptions = [
+                'cache' => __DIR__ . '/cache',
+                'strict_variables' => true,
+            ];
+            $report = new HtmlReport(__DIR__ . '/custom', $twigOptions);
+            $report->setTemplate('factura.html.twig');
+        } else {
+            $report = new HtmlReport();
+            $resolver = new DefaultTemplateResolver();
+            $report->setTemplate($resolver->getTemplate($invoice));
+        }
 
-        $ruc = $invoice->getCompany()->getRuc();
-        $company = ModelsCompany::where("ruc", $ruc)->first();
+
+
+
 
         $params = [
             'system' => [
-                'logo' => "", // Logo de Empresa
+                'logo' => base64_decode($company["logo"])
+                , // Logo de Empresa
                 'hash' => 'qqnr2dN4p/HmaEA/CJuVGo7dv5g=', // Valor Resumen 
             ],
             'user' => [
-                'header' => 'Telf: <b>(01) 123375</b>', // Texto que se ubica debajo de la dirección de empresa
+                'header' => "Telf: $company[telephone]", // Texto que se ubica debajo de la dirección de empresa
                 'extras' => [
                     // Leyendas adicionales
-                    ['name' => 'CONDICION DE PAGO', 'value' => 'Efectivo'],
-                    ['name' => 'VENDEDOR', 'value' => 'GITHUB SELLER'],
+                    ['name' => 'CONDICION DE PAGO', 'value' => $company["condicion_pago"]], // efectivo
+                    ['name' => 'VENDEDOR', 'value' => $company["vendedor"]],
                 ],
                 'footer' => '<p>Nro Resolucion: <b>3232323</b></p>'
             ]

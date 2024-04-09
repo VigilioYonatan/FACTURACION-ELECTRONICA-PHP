@@ -23,10 +23,7 @@ class InvoiceController extends Controller
             "details.*" => "required|array"
         ]);
         $body = $request->all();
-        $ruc = $body["company"]["ruc"];
-        $company = Company::where("ruc", $ruc)->first();
-        if (!$company)
-            throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");
+        $company = $body["company"];
         $this->setTotales($body);
         $this->setLegends($body);
 
@@ -51,22 +48,20 @@ class InvoiceController extends Controller
             "details.*" => "required|array"
         ]);
         $body = $request->all();
-        $ruc = $body["company"]["ruc"];
-        $company = Company::where("ruc", $ruc)->first();
-        if (!$company)
-            throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");
+        $company = $body["company"];
+
         $this->setTotales($body);
         $this->setLegends($body);
 
         $sunat = new SunatService();
         $see = $sunat->getSee($company); // para xml
         $invoice = $sunat->getInvoice($body);
-        // $response['xml'] = $see->getXmlSigned($invoice);
-        // $response['hash'] = (new XmlUtils())->getHashSign($response['xml']);
+
         return $see->getXmlSigned($invoice);
     }
     public function pdf(Request $request)
     {
+
         $request->validate([
             "company" => "required|array",
             "company.address" => "required|array",
@@ -75,10 +70,11 @@ class InvoiceController extends Controller
             "details.*" => "required|array"
         ]);
         $body = $request->all();
-        $ruc = $body["company"]["ruc"];
-        $company = Company::where("ruc", $ruc)->first();
-        if (!$company)
-            throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");
+        $type = $request->query("type", "invoice"); 
+        // $company = Company::where("ruc", $ruc)->first();
+        // if (!$company)
+        //     throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");
+        $company = $body["company"];
         $this->setTotales($body);
         $this->setLegends($body);
 
@@ -86,7 +82,7 @@ class InvoiceController extends Controller
         $invoice = $sunat->getInvoice($body);
         // $response['xml'] = $see->getXmlSigned($invoice);
         // $response['hash'] = (new XmlUtils())->getHashSign($response['xml']);
-        return $sunat->getHtmlReport($invoice);
+        return $sunat->getHtmlReport($invoice, $company, $type);
     }
 
 

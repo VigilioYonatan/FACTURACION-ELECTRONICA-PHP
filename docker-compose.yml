@@ -4,7 +4,7 @@ services:
         build: ./docker
         container_name: php
         ports:
-            - "4000:80"
+            - "4001:80"
             - "5133:5133"
         volumes:
             - ./:/var/www
