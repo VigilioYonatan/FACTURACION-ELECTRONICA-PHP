@@ -319,7 +319,7 @@ class __TwigTemplate_4b0cf974ef5fafb68a70a9f6423d3ca4 extends Template
                 </table></div>
             <table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
                 <tbody><tr>
-                    <td width=\"50%\" valign=\"top\">
+                    <td width=\"1000%\" valign=\"top\">
                         <table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"0\">
                             <tbody>
                             <tr>
@@ -471,236 +471,237 @@ class __TwigTemplate_4b0cf974ef5fafb68a70a9f6423d3ca4 extends Template
         }
         // line 229
         echo "                    </td>
-                    <td width=\"50%\" valign=\"top\">
+                    
+                </tr><tr>
+                <td width=\"100%\" valign=\"top\">
                         <br>
                         <table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"table table-valores-totales\">
                             <tbody>
                             ";
-        // line 234
-        if ((isset($context["isAnticipo"]) || array_key_exists("isAnticipo", $context) ? $context["isAnticipo"] : (function () { throw new RuntimeError('Variable "isAnticipo" does not exist.', 234, $this->source); })())) {
-            // line 235
+        // line 236
+        if ((isset($context["isAnticipo"]) || array_key_exists("isAnticipo", $context) ? $context["isAnticipo"] : (function () { throw new RuntimeError('Variable "isAnticipo" does not exist.', 236, $this->source); })())) {
+            // line 237
             echo "                                <tr class=\"border_bottom\">
                                     <td align=\"right\"><strong>Total Anticipo:</strong></td>
                                     <td width=\"120\" align=\"right\"><span>";
-            // line 237
-            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 237, $this->source); })()), "html", null, true);
+            // line 239
+            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 239, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 237, $this->source); })()), "totalAnticipos", [], "any", false, false, false, 237)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 239, $this->source); })()), "totalAnticipos", [], "any", false, false, false, 239)), "html", null, true);
             echo "</span></td>
                                 </tr>
                             ";
         }
-        // line 240
+        // line 242
         echo "                            ";
-        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 240, $this->source); })()), "mtoOperGravadas", [], "any", false, false, false, 240)) {
-            // line 241
+        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 242, $this->source); })()), "mtoOperGravadas", [], "any", false, false, false, 242)) {
+            // line 243
             echo "                            <tr class=\"border_bottom\">
                                 <td align=\"right\"><strong>Op. Gravadas:</strong></td>
                                 <td width=\"120\" align=\"right\"><span>";
-            // line 243
-            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 243, $this->source); })()), "html", null, true);
+            // line 245
+            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 245, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 243, $this->source); })()), "mtoOperGravadas", [], "any", false, false, false, 243)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 245, $this->source); })()), "mtoOperGravadas", [], "any", false, false, false, 245)), "html", null, true);
             echo "</span></td>
                             </tr>
                             ";
         }
-        // line 246
+        // line 248
         echo "                            ";
-        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 246, $this->source); })()), "mtoOperInafectas", [], "any", false, false, false, 246)) {
-            // line 247
+        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 248, $this->source); })()), "mtoOperInafectas", [], "any", false, false, false, 248)) {
+            // line 249
             echo "                            <tr class=\"border_bottom\">
                                 <td align=\"right\"><strong>Op. Inafectas:</strong></td>
                                 <td width=\"120\" align=\"right\"><span>";
-            // line 249
-            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 249, $this->source); })()), "html", null, true);
+            // line 251
+            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 251, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 249, $this->source); })()), "mtoOperInafectas", [], "any", false, false, false, 249)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 251, $this->source); })()), "mtoOperInafectas", [], "any", false, false, false, 251)), "html", null, true);
             echo "</span></td>
                             </tr>
                             ";
         }
-        // line 252
+        // line 254
         echo "                            ";
-        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 252, $this->source); })()), "mtoOperExoneradas", [], "any", false, false, false, 252)) {
-            // line 253
+        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 254, $this->source); })()), "mtoOperExoneradas", [], "any", false, false, false, 254)) {
+            // line 255
             echo "                            <tr class=\"border_bottom\">
                                 <td align=\"right\"><strong>Op. Exoneradas:</strong></td>
                                 <td width=\"120\" align=\"right\"><span>";
-            // line 255
-            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 255, $this->source); })()), "html", null, true);
+            // line 257
+            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 257, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 255, $this->source); })()), "mtoOperExoneradas", [], "any", false, false, false, 255)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 257, $this->source); })()), "mtoOperExoneradas", [], "any", false, false, false, 257)), "html", null, true);
             echo "</span></td>
                             </tr>
                             ";
         }
-        // line 258
+        // line 260
         echo "                            <tr>
                                 <td align=\"right\"><strong>I.G.V.";
-        // line 259
-        if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["params"] ?? null), "user", [], "any", false, true, false, 259), "numIGV", [], "any", true, true, false, 259)) {
+        // line 261
+        if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["params"] ?? null), "user", [], "any", false, true, false, 261), "numIGV", [], "any", true, true, false, 261)) {
             echo " ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 259, $this->source); })()), "user", [], "any", false, false, false, 259), "numIGV", [], "any", false, false, false, 259), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 261, $this->source); })()), "user", [], "any", false, false, false, 261), "numIGV", [], "any", false, false, false, 261), "html", null, true);
             echo "%";
         }
         echo ":</strong></td>
                                 <td width=\"120\" align=\"right\"><span>";
-        // line 260
-        echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 260, $this->source); })()), "html", null, true);
+        // line 262
+        echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 262, $this->source); })()), "html", null, true);
         echo "  ";
-        echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 260, $this->source); })()), "mtoIGV", [], "any", false, false, false, 260)), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 262, $this->source); })()), "mtoIGV", [], "any", false, false, false, 262)), "html", null, true);
         echo "</span></td>
                             </tr>
                             ";
-        // line 262
-        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 262, $this->source); })()), "mtoISC", [], "any", false, false, false, 262)) {
-            // line 263
+        // line 264
+        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 264, $this->source); })()), "mtoISC", [], "any", false, false, false, 264)) {
+            // line 265
             echo "                            <tr>
                                 <td align=\"right\"><strong>I.S.C.:</strong></td>
                                 <td width=\"120\" align=\"right\"><span>";
-            // line 265
-            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 265, $this->source); })()), "html", null, true);
+            // line 267
+            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 267, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 265, $this->source); })()), "mtoISC", [], "any", false, false, false, 265)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 267, $this->source); })()), "mtoISC", [], "any", false, false, false, 267)), "html", null, true);
             echo "</span></td>
                             </tr>
                             ";
         }
-        // line 268
+        // line 270
         echo "                            ";
-        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 268, $this->source); })()), "sumOtrosCargos", [], "any", false, false, false, 268)) {
-            // line 269
+        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 270, $this->source); })()), "sumOtrosCargos", [], "any", false, false, false, 270)) {
+            // line 271
             echo "                                <tr>
                                     <td align=\"right\"><strong>Otros Cargos:</strong></td>
                                     <td width=\"120\" align=\"right\"><span>";
-            // line 271
-            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 271, $this->source); })()), "html", null, true);
+            // line 273
+            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 273, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 271, $this->source); })()), "sumOtrosCargos", [], "any", false, false, false, 271)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 273, $this->source); })()), "sumOtrosCargos", [], "any", false, false, false, 273)), "html", null, true);
             echo "</span></td>
                                 </tr>
                             ";
         }
-        // line 274
+        // line 276
         echo "                            ";
-        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 274, $this->source); })()), "icbper", [], "any", false, false, false, 274)) {
-            // line 275
+        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 276, $this->source); })()), "icbper", [], "any", false, false, false, 276)) {
+            // line 277
             echo "                                <tr>
                                     <td align=\"right\"><strong>I.C.B.P.E.R.:</strong></td>
                                     <td width=\"120\" align=\"right\"><span>";
-            // line 277
-            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 277, $this->source); })()), "html", null, true);
+            // line 279
+            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 279, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 277, $this->source); })()), "icbper", [], "any", false, false, false, 277)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 279, $this->source); })()), "icbper", [], "any", false, false, false, 279)), "html", null, true);
             echo "</span></td>
                                 </tr>
                             ";
         }
-        // line 280
+        // line 282
         echo "                            ";
-        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 280, $this->source); })()), "mtoOtrosTributos", [], "any", false, false, false, 280)) {
-            // line 281
+        if (twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 282, $this->source); })()), "mtoOtrosTributos", [], "any", false, false, false, 282)) {
+            // line 283
             echo "                                <tr>
                                     <td align=\"right\"><strong>Otros Tributos:</strong></td>
                                     <td width=\"120\" align=\"right\"><span>";
-            // line 283
-            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 283, $this->source); })()), "html", null, true);
+            // line 285
+            echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 285, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 283, $this->source); })()), "mtoOtrosTributos", [], "any", false, false, false, 283)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 285, $this->source); })()), "mtoOtrosTributos", [], "any", false, false, false, 285)), "html", null, true);
             echo "</span></td>
                                 </tr>
                             ";
         }
-        // line 286
+        // line 288
         echo "                            <tr>
                                 <td align=\"right\"><strong>Precio Venta:</strong></td>
                                 <td width=\"120\" align=\"right\"><span id=\"ride-importeTotal\" class=\"ride-importeTotal\">";
-        // line 288
-        echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 288, $this->source); })()), "html", null, true);
+        // line 290
+        echo twig_escape_filter($this->env, (isset($context["moneda"]) || array_key_exists("moneda", $context) ? $context["moneda"] : (function () { throw new RuntimeError('Variable "moneda" does not exist.', 290, $this->source); })()), "html", null, true);
         echo "  ";
-        echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 288, $this->source); })()), "mtoImpVenta", [], "any", false, false, false, 288)), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 290, $this->source); })()), "mtoImpVenta", [], "any", false, false, false, 290)), "html", null, true);
         echo "</span></td>
                             </tr>
                             ";
-        // line 290
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 290, $this->source); })()), "perception", [], "any", false, false, false, 290) && twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 290, $this->source); })()), "perception", [], "any", false, false, false, 290), "mto", [], "any", false, false, false, 290))) {
-            // line 291
+        // line 292
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 292, $this->source); })()), "perception", [], "any", false, false, false, 292) && twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 292, $this->source); })()), "perception", [], "any", false, false, false, 292), "mto", [], "any", false, false, false, 292))) {
+            // line 293
             echo "                                ";
-            $context["perc"] = twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 291, $this->source); })()), "perception", [], "any", false, false, false, 291);
-            // line 292
+            $context["perc"] = twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 293, $this->source); })()), "perception", [], "any", false, false, false, 293);
+            // line 294
             echo "                                ";
             $context["soles"] = $this->env->getRuntime('Greenter\Report\Filter\DocumentFilter')->getValueCatalog("PEN", "02");
-            // line 293
+            // line 295
             echo "                                <tr>
                                     <td align=\"right\"><strong>Percepción:</strong></td>
                                     <td width=\"120\" align=\"right\"><span>";
-            // line 295
-            echo twig_escape_filter($this->env, (isset($context["soles"]) || array_key_exists("soles", $context) ? $context["soles"] : (function () { throw new RuntimeError('Variable "soles" does not exist.', 295, $this->source); })()), "html", null, true);
+            // line 297
+            echo twig_escape_filter($this->env, (isset($context["soles"]) || array_key_exists("soles", $context) ? $context["soles"] : (function () { throw new RuntimeError('Variable "soles" does not exist.', 297, $this->source); })()), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["perc"]) || array_key_exists("perc", $context) ? $context["perc"] : (function () { throw new RuntimeError('Variable "perc" does not exist.', 295, $this->source); })()), "mto", [], "any", false, false, false, 295)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["perc"]) || array_key_exists("perc", $context) ? $context["perc"] : (function () { throw new RuntimeError('Variable "perc" does not exist.', 297, $this->source); })()), "mto", [], "any", false, false, false, 297)), "html", null, true);
             echo "</span></td>
                                 </tr>
                                 <tr>
                                     <td align=\"right\"><strong>Total a Pagar:</strong></td>
                                     <td width=\"120\" align=\"right\"><span>";
-            // line 299
-            echo twig_escape_filter($this->env, (isset($context["soles"]) || array_key_exists("soles", $context) ? $context["soles"] : (function () { throw new RuntimeError('Variable "soles" does not exist.', 299, $this->source); })()), "html", null, true);
+            // line 301
+            echo twig_escape_filter($this->env, (isset($context["soles"]) || array_key_exists("soles", $context) ? $context["soles"] : (function () { throw new RuntimeError('Variable "soles" does not exist.', 301, $this->source); })()), "html", null, true);
             echo " ";
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["perc"]) || array_key_exists("perc", $context) ? $context["perc"] : (function () { throw new RuntimeError('Variable "perc" does not exist.', 299, $this->source); })()), "mtoTotal", [], "any", false, false, false, 299)), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\FormatFilter')->number(twig_get_attribute($this->env, $this->source, (isset($context["perc"]) || array_key_exists("perc", $context) ? $context["perc"] : (function () { throw new RuntimeError('Variable "perc" does not exist.', 301, $this->source); })()), "mtoTotal", [], "any", false, false, false, 301)), "html", null, true);
             echo "</span></td>
                                 </tr>
                             ";
         }
-        // line 302
+        // line 304
         echo "                            </tbody>
                         </table>
-                    </td>
-                </tr>
+                    </td></tr>
                 </tbody></table>
             <br>
             <br>
             ";
-        // line 309
-        if ((array_key_exists("max_items", $context) && (twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 309, $this->source); })()), "details", [], "any", false, false, false, 309)) > (isset($context["max_items"]) || array_key_exists("max_items", $context) ? $context["max_items"] : (function () { throw new RuntimeError('Variable "max_items" does not exist.', 309, $this->source); })())))) {
-            // line 310
+        // line 310
+        if ((array_key_exists("max_items", $context) && (twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 310, $this->source); })()), "details", [], "any", false, false, false, 310)) > (isset($context["max_items"]) || array_key_exists("max_items", $context) ? $context["max_items"] : (function () { throw new RuntimeError('Variable "max_items" does not exist.', 310, $this->source); })())))) {
+            // line 311
             echo "                <div style=\"page-break-after:always;\"></div>
             ";
         }
-        // line 312
+        // line 313
         echo "            <div>
                 <hr style=\"display: block; height: 1px; border: 0; border-top: 1px solid #666; margin: 20px 0; padding: 0;\"><table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
                     <tbody><tr>
                         <td width=\"85%\">
                             <blockquote>
                                 ";
-        // line 317
-        if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["params"] ?? null), "user", [], "any", false, true, false, 317), "footer", [], "any", true, true, false, 317)) {
-            // line 318
+        // line 318
+        if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["params"] ?? null), "user", [], "any", false, true, false, 318), "footer", [], "any", true, true, false, 318)) {
+            // line 319
             echo "                                    ";
-            echo twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 318, $this->source); })()), "user", [], "any", false, false, false, 318), "footer", [], "any", false, false, false, 318);
+            echo twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 319, $this->source); })()), "user", [], "any", false, false, false, 319), "footer", [], "any", false, false, false, 319);
             echo "
                                 ";
         }
-        // line 320
+        // line 321
         echo "                                ";
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["params"] ?? null), "system", [], "any", false, true, false, 320), "hash", [], "any", true, true, false, 320) && twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 320, $this->source); })()), "system", [], "any", false, false, false, 320), "hash", [], "any", false, false, false, 320))) {
-            // line 321
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["params"] ?? null), "system", [], "any", false, true, false, 321), "hash", [], "any", true, true, false, 321) && twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 321, $this->source); })()), "system", [], "any", false, false, false, 321), "hash", [], "any", false, false, false, 321))) {
+            // line 322
             echo "                                    <strong>Resumen:</strong>   ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 321, $this->source); })()), "system", [], "any", false, false, false, 321), "hash", [], "any", false, false, false, 321), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 322, $this->source); })()), "system", [], "any", false, false, false, 322), "hash", [], "any", false, false, false, 322), "html", null, true);
             echo "<br>
                                 ";
         }
-        // line 323
+        // line 324
         echo "                                <span>Representación Impresa de la ";
-        echo twig_escape_filter($this->env, (isset($context["name"]) || array_key_exists("name", $context) ? $context["name"] : (function () { throw new RuntimeError('Variable "name" does not exist.', 323, $this->source); })()), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["name"]) || array_key_exists("name", $context) ? $context["name"] : (function () { throw new RuntimeError('Variable "name" does not exist.', 324, $this->source); })()), "html", null, true);
         echo " ELECTRÓNICA.</span>
                             </blockquote>
                         </td>
                         <td width=\"15%\" align=\"right\">
                             <img src=\"";
-        // line 327
-        echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\ImageFilter')->toBase64($this->env->getRuntime('Greenter\Report\Render\QrRender')->getImage((isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 327, $this->source); })())), "svg+xml"), "html", null, true);
+        // line 328
+        echo twig_escape_filter($this->env, $this->env->getRuntime('Greenter\Report\Filter\ImageFilter')->toBase64($this->env->getRuntime('Greenter\Report\Render\QrRender')->getImage((isset($context["doc"]) || array_key_exists("doc", $context) ? $context["doc"] : (function () { throw new RuntimeError('Variable "doc" does not exist.', 328, $this->source); })())), "svg+xml"), "html", null, true);
         echo "\" alt=\"Qr Image\">
                         </td>
                     </tr>
@@ -733,7 +734,7 @@ class __TwigTemplate_4b0cf974ef5fafb68a70a9f6423d3ca4 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  703 => 327,  695 => 323,  689 => 321,  686 => 320,  680 => 318,  678 => 317,  671 => 312,  667 => 310,  665 => 309,  656 => 302,  648 => 299,  639 => 295,  635 => 293,  632 => 292,  629 => 291,  627 => 290,  620 => 288,  616 => 286,  608 => 283,  604 => 281,  601 => 280,  593 => 277,  589 => 275,  586 => 274,  578 => 271,  574 => 269,  571 => 268,  563 => 265,  559 => 263,  557 => 262,  550 => 260,  542 => 259,  539 => 258,  531 => 255,  527 => 253,  524 => 252,  516 => 249,  512 => 247,  509 => 246,  501 => 243,  497 => 241,  494 => 240,  486 => 237,  482 => 235,  480 => 234,  473 => 229,  468 => 226,  457 => 223,  453 => 222,  450 => 221,  446 => 220,  427 => 203,  425 => 202,  421 => 200,  418 => 199,  408 => 195,  402 => 192,  398 => 190,  393 => 189,  390 => 188,  383 => 184,  376 => 179,  374 => 178,  369 => 175,  363 => 174,  357 => 172,  354 => 171,  350 => 170,  331 => 154,  318 => 143,  308 => 139,  304 => 138,  298 => 135,  294 => 134,  288 => 131,  282 => 128,  276 => 125,  272 => 124,  268 => 122,  264 => 121,  252 => 111,  250 => 110,  246 => 108,  240 => 104,  231 => 103,  227 => 102,  223 => 100,  221 => 99,  213 => 97,  209 => 96,  206 => 95,  200 => 92,  196 => 91,  193 => 90,  191 => 89,  184 => 87,  181 => 86,  175 => 84,  172 => 83,  166 => 82,  162 => 81,  153 => 77,  149 => 76,  145 => 74,  143 => 73,  132 => 65,  124 => 60,  116 => 55,  97 => 41,  89 => 36,  79 => 29,  67 => 20,  58 => 13,  56 => 12,  54 => 11,  52 => 10,  50 => 9,  45 => 6,  43 => 5,  37 => 1,);
+        return array (  704 => 328,  696 => 324,  690 => 322,  687 => 321,  681 => 319,  679 => 318,  672 => 313,  668 => 311,  666 => 310,  658 => 304,  650 => 301,  641 => 297,  637 => 295,  634 => 294,  631 => 293,  629 => 292,  622 => 290,  618 => 288,  610 => 285,  606 => 283,  603 => 282,  595 => 279,  591 => 277,  588 => 276,  580 => 273,  576 => 271,  573 => 270,  565 => 267,  561 => 265,  559 => 264,  552 => 262,  544 => 261,  541 => 260,  533 => 257,  529 => 255,  526 => 254,  518 => 251,  514 => 249,  511 => 248,  503 => 245,  499 => 243,  496 => 242,  488 => 239,  484 => 237,  482 => 236,  473 => 229,  468 => 226,  457 => 223,  453 => 222,  450 => 221,  446 => 220,  427 => 203,  425 => 202,  421 => 200,  418 => 199,  408 => 195,  402 => 192,  398 => 190,  393 => 189,  390 => 188,  383 => 184,  376 => 179,  374 => 178,  369 => 175,  363 => 174,  357 => 172,  354 => 171,  350 => 170,  331 => 154,  318 => 143,  308 => 139,  304 => 138,  298 => 135,  294 => 134,  288 => 131,  282 => 128,  276 => 125,  272 => 124,  268 => 122,  264 => 121,  252 => 111,  250 => 110,  246 => 108,  240 => 104,  231 => 103,  227 => 102,  223 => 100,  221 => 99,  213 => 97,  209 => 96,  206 => 95,  200 => 92,  196 => 91,  193 => 90,  191 => 89,  184 => 87,  181 => 86,  175 => 84,  172 => 83,  166 => 82,  162 => 81,  153 => 77,  149 => 76,  145 => 74,  143 => 73,  132 => 65,  124 => 60,  116 => 55,  97 => 41,  89 => 36,  79 => 29,  67 => 20,  58 => 13,  56 => 12,  54 => 11,  52 => 10,  50 => 9,  45 => 6,  43 => 5,  37 => 1,);
     }
 
     public function getSourceContext()
