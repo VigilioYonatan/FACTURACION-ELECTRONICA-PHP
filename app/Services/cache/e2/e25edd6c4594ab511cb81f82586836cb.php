@@ -670,7 +670,7 @@ class __TwigTemplate_4b0cf974ef5fafb68a70a9f6423d3ca4 extends Template
         }
         // line 313
         echo "            <div>
-                <hr style=\"display: block; height: 1px; border: 0; border-top: 1px solid #666; margin: 20px 0; padding: 0;\"><table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
+                <hr style=\"display: block; height: 1px; border: 0; border-top: 1px solid #666;  padding: 0;\"><table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
                     <tbody><tr>
                         <td width=\"100%\">
                             <blockquote>

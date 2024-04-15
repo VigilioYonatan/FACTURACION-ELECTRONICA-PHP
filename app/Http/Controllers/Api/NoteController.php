@@ -23,10 +23,7 @@ class NoteController extends Controller
             "details.*" => "required|array"
         ]);
         $body = $request->all();
-        $ruc = $body["company"]["ruc"];
-        $company = Company::where("ruc", $ruc)->first();
-        if (!$company)
-            throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");
+        $company = $body["company"];
         $this->setTotales($body);
         $this->setLegends($body);
 
@@ -51,10 +48,7 @@ class NoteController extends Controller
             "details.*" => "required|array"
         ]);
         $body = $request->all();
-        $ruc = $body["company"]["ruc"];
-        $company = Company::where("ruc", $ruc)->first();
-        if (!$company)
-            throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");
+        $company = $body["company"];
         $this->setTotales($body);
         $this->setLegends($body);
 
@@ -75,10 +69,8 @@ class NoteController extends Controller
             "details.*" => "required|array"
         ]);
         $body = $request->all();
-        $ruc = $body["company"]["ruc"];
-        $company = Company::where("ruc", $ruc)->first();
-        if (!$company)
-            throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");
+        $company = $body["company"];
+        $type = $request->query("type", "invoice");
         $this->setTotales($body);
         $this->setLegends($body);
 
@@ -87,7 +79,7 @@ class NoteController extends Controller
 
         // $response['xml'] = $see->getXmlSigned($invoice);
         // $response['hash'] = (new XmlUtils())->getHashSign($response['xml']);
-        return $sunat->getHtmlReport($note);
+        return $sunat->getHtmlReport($note, $company, $type);
     }
 
 
