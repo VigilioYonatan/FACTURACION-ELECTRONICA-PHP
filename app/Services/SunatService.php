@@ -84,7 +84,7 @@ class SunatService
     public function getInvoice($data)
     {
         // Venta
-        return (new Invoice())
+        return (new Invoice)
             ->setUblVersion($data["ublVersion"] ?? "2.1")
             ->setTipoOperacion($data["tipoOperacion"] ?? null) // Venta - Catalog. 51
             ->setTipoDoc($data["tipoDoc"] ?? null) // Factura - Catalog. 01 
@@ -173,7 +173,7 @@ class SunatService
     }
     public function getCompany($company)
     {
-        return (new Company())
+        return (new Company)
             ->setRuc($company["ruc"] ?? null)
             ->setRazonSocial($company["razonSocial"] ?? null)
             ->setNombreComercial($company["nombreComercial"] ?? null)
@@ -181,14 +181,14 @@ class SunatService
     }
     public function getClient($client)
     {
-        return (new Client())
+        return (new Client)
             ->setTipoDoc($client["tipoDoc"] ?? null)
             ->setNumDoc($client["numDoc"] ?? null)
             ->setRznSocial($client["rznSocial"] ?? null);
     }
     public function getAddress($address)
     {
-        return (new Address())
+        return (new Address)
             ->setUbigueo($address["ubigeo"] ?? null)
             ->setDepartamento($address["departamento"] ?? null)
             ->setProvincia($address["provincia"] ?? null)
@@ -202,7 +202,7 @@ class SunatService
     {
         $green_details = [];
         foreach ($details as $detail) {
-            $green_details[] = (new SaleDetail())
+            $green_details[] = (new SaleDetail)
                 ->setTipAfeIgv($detail["tipAfeIgv"] ?? null) // Gravado Op. Onerosa - Catalog. 07
                 ->setCodProducto($detail["codProducto"] ?? null)
                 ->setUnidad($detail["unidad"] ?? null) // Unidad - Catalog. 03
@@ -224,7 +224,7 @@ class SunatService
     {
         $green_details = [];
         foreach ($details as $detail) {
-            $green_details[] = (new DespatchDetail())
+            $green_details[] = (new DespatchDetail)
                 ->setCodigo($detail["codigo"] ?? null)
                 ->setUnidad($detail["unidad"] ?? null) // Unidad - Catalog. 03
                 ->setDescripcion($detail["descripcion"] ?? null)
@@ -238,7 +238,7 @@ class SunatService
     {
         $green_legends = [];
         foreach ($legends as $legend) {
-            $green_legends[] = (new Legend())
+            $green_legends[] = (new Legend)
                 ->setCode($legend["code"] ?? null) // Monto en letras - Catalog. 52
                 ->setValue($legend["value"] ?? null);
         }
@@ -279,9 +279,9 @@ class SunatService
         $vehiculos = collect($vehiculos);
         $secundarios = [];
         foreach ($vehiculos->slice(1) as $item) {
-            $secundarios[] = (new Vehicle())->setPlaca($item["placa"] ?? null);
+            $secundarios[] = (new Vehicle)->setPlaca($item["placa"] ?? null);
         }
-        return (new Vehicle())->setPlaca($vehiculos->first()["placa"] ?? null)->setSecundarios($secundarios);
+        return (new Vehicle)->setPlaca($vehiculos->first()["placa"] ?? null)->setSecundarios($secundarios);
     }
     public function getChoferes($choferes)
     {
@@ -347,10 +347,6 @@ class SunatService
             $resolver = new DefaultTemplateResolver();
             $report->setTemplate($resolver->getTemplate($invoice));
         }
-
-
-
-
 
         $params = [
             'system' => [

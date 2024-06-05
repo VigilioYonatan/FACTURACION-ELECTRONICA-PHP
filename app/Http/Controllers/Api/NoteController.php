@@ -32,8 +32,8 @@ class NoteController extends Controller
         $note = $sunat->getNote($body);
         $result = $see->send($note);
 
-        // $response["xml"] = $see->getFactory()->getLastXml();
-        // $response["hash"] = (new XmlUtils())->getHashSign($response["xml"]);
+        $response["xml"] = $see->getFactory()->getLastXml();
+        $response["hash"] = (new XmlUtils())->getHashSign($response["xml"]);
         $response["sunatResponse"] = $sunat->sunatResponse($result);
         return $response;
 

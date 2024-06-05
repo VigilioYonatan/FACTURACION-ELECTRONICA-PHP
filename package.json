@@ -5,7 +5,8 @@
         "dev": "vite",
         "build": "vite build",
         "biome:format": "biome format  ./resources/ts --write",
-        "biome:check": "biome check ./resources/ts"
+        "biome:check": "biome check ./resources/ts",
+        "serve": "php artisan serve"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.3.3",

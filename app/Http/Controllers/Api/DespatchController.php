@@ -20,16 +20,19 @@ class DespatchController extends Controller
             "envio" => "required|array",
             "details.*" => "required|array"
         ]);
-        $body = $request->all();
-        $ruc = $body["company"]["ruc"];
-        $company = Company::where("ruc", $ruc)->first();
-        if (!$company)
-            throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");
         $sunat = new SunatService();
+        $body = $request->all();
+        $company = $body["company"];
         $despatch = $sunat->getDespatch($body);
         $api = $sunat->getSeeApi($company);
         $result = $api->send($despatch);
-        // $ticket = $result->getTicket();
+        $ticket = $result->getTicket();
+        return $ticket;
+        $result = $api->getStatus($ticket);
+        $response["xml"] = $api->getLastXml();
+        $response["hash"] = (new XmlUtils())->getHashSign($response["xml"]);
+        $response["sunatResponse"] = $sunat->sunatResponse($result);
+        return "error";
         // $result = $api->getStatus($ticket);
         // $response['xml'] = $api->getLastXml();
         // $response['hash'] = (new XmlUtils())->getHashSign($response['xml']);
