@@ -40,7 +40,7 @@ CMD bun install
 CMD composer install
 CMD php artisan key:generate 
 CMD chmod 777 storage -R
-# Change the owner of the container document root
-RUN chown -R www-data:www-data /var/www
+# Change the owner of the container document2 root
+RUN chown -R www-data:www-data /var/www 
 # Start Apache in foreground
 CMD ["apache2-foreground"]
