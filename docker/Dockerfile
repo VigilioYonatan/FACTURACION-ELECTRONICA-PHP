@@ -1,8 +1,4 @@
 FROM php:8.0-fpm
-# Copy virtual host into container
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
-# Enable rewrite mode
-RUN a2enmod rewrite
 
 # Install necessary packages
 RUN apt-get update && \
@@ -39,8 +35,7 @@ WORKDIR /var/www
 CMD bun install
 CMD composer install
 CMD php artisan key:generate 
-CMD chmod 777 storage -R
 # Change the owner of the container document2 root
-RUN chown -R www-data:www-data /var/www 
+COPY --chown=www-data:www-data . /var/www
 # Start Apache in foreground
 CMD ["php-fpm"]
