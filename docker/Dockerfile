@@ -34,7 +34,7 @@ RUN apt-get purge -y g++ \
     && sh ./install-composer.sh \
     && rm ./install-composer.sh
 RUN curl -fsSL https://bun.sh/install | bash
-# Change the current working directory
+# Change the current working directorysz
 WORKDIR /var/www
 CMD bun install
 CMD composer install
