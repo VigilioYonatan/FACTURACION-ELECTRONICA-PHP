@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.0-fpm
 # Copy virtual host into container
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 # Enable rewrite mode
@@ -43,4 +43,4 @@ CMD chmod 777 storage -R
 # Change the owner of the container document2 root
 RUN chown -R www-data:www-data /var/www 
 # Start Apache in foreground
-CMD ["apache2-foreground"]
+CMD ["php-fpm"]

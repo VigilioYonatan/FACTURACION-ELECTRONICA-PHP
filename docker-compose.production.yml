@@ -10,14 +10,17 @@ services:
     depends_on:
       - app
   app:
-    build: ./docker
+    image: vigilio/vigilio-services-facturacion:latest
     container_name: php
     ports:
       - "${PORT}:80"
     volumes:
       - ./:/var/www
+      - ./docker/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - db
+    networks:
+      - laravel
     environment:
       PORT: ${PORT}
       APP_NAME: ${APP_NAME}
@@ -85,6 +88,8 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
     restart: always
+    networks:
+      - laravel
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -95,6 +100,9 @@ services:
       - "8080:80"
     depends_on:
       - db
-
+    networks:
+      - laravel
+networks:
+  laravel:
 volumes:
   mysql-data:
