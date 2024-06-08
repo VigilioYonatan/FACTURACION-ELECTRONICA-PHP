@@ -29,9 +29,9 @@ RUN apt-get purge -y g++ \
 RUN curl -fsSL https://bun.sh/install | bash
 # Change the current working directorysz
 WORKDIR /var/www/html
-RUN bun install
-RUN composer install
-RUN php artisan key:generate 
+CMD bun install
+CMD composer install
+CMD php artisan key:generate 
 # Change the owner of the container document2 root
 COPY --chown=www-data:www-data . /var/www/html
 # Start Apache in foreground
