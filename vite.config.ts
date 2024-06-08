@@ -3,6 +3,7 @@ import laravel from "laravel-vite-plugin";
 import preact from "@preact/preset-vite";
 import million from "million/compiler";
 import path from "node:path";
+
 export default defineConfig({
     plugins: [
         laravel({
@@ -14,8 +15,8 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            "@": path.resolve(import.meta.dir, "resources", "ts", "services"),
-            "~": path.resolve(import.meta.dir, "resources", "ts"),
+            "@": path.resolve(__dirname, "resources", "ts", "services"),
+            "~": path.resolve(__dirname, "resources", "ts"),
         },
     },
     server: {

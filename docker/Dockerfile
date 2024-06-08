@@ -1,5 +1,5 @@
-FROM php:8.0-fpm
-
+FROM php:8.1-apache
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 # Install necessary packages
 RUN apt-get update && \
     apt-get install \
@@ -8,6 +8,7 @@ RUN apt-get update && \
     git \
     unzip \ 
     libxml2-dev \
+    openssl \
     -y --no-install-recommends
 
 # Install PHP Extensions
@@ -18,6 +19,7 @@ RUN docker-php-ext-install zip pdo_mysql soap
 
 # Copy composer installable
 COPY ./install-composer.sh ./
+COPY ./php.ini /usr/local/etc/php/
 
 # Cleanup packages and install composer
 RUN apt-get purge -y g++ \
@@ -29,10 +31,10 @@ RUN apt-get purge -y g++ \
 RUN curl -fsSL https://bun.sh/install | bash
 # Change the current working directorysz
 WORKDIR /var/www/html
-CMD bun install
+CMD bun install && bun run build 
 CMD composer install
-CMD php artisan key:generate 
 # Change the owner of the container document2 root
 COPY --chown=www-data:www-data . /var/www/html
-# Start Apache in foreground
-CMD ["php-fpm"]
+CMD php artisan key:generate 
+RUN chmod -R 775 /var/www/html
+CMD ["apache2-foreground"]
