@@ -28,13 +28,12 @@ RUN apt-get purge -y g++ \
     && rm -rf /tmp/* \
     && sh ./install-composer.sh \
     && rm ./install-composer.sh
-RUN curl -fsSL https://bun.sh/install | bash
+RUN curl -fsSL https://bun.sh/install | bash && \
+ln -s $HOME/.bun/bin/bun /usr/local/bin/bun
 # Change the current working directorysz
 WORKDIR /var/www/html
-CMD bun install && bun run build 
-CMD composer install
 # Change the owner of the container document2 root
+RUN chmod -R 775 /var/www/html 
 COPY --chown=www-data:www-data . /var/www/html
-CMD php artisan key:generate 
-RUN chmod -R 775 /var/www/html
+
 CMD ["apache2-foreground"]
