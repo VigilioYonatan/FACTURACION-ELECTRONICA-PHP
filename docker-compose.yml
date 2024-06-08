@@ -1,13 +1,14 @@
 version: "3.7"
 services:
     app:
-        build: ./docker
+        image: vigilio/vigilio-services-facturacion:latest
         container_name: php
         ports:
             - "4001:80"
             - "5133:5133"
         volumes:
-            - ./:/var/www
+            - ./:/var/www/html
+            - ./docker/default.conf:/etc/nginx/conf.d/default.conf
         depends_on:
             - db
         networks:

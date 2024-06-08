@@ -19,9 +19,6 @@ RUN docker-php-ext-install zip pdo_mysql soap
 # Copy composer installable
 COPY ./install-composer.sh ./
 
-# Copy php.ini
-COPY ./php.ini /usr/local/etc/php/
-
 # Cleanup packages and install composer
 RUN apt-get purge -y g++ \
     && apt-get autoremove -y \
@@ -31,11 +28,11 @@ RUN apt-get purge -y g++ \
     && rm ./install-composer.sh
 RUN curl -fsSL https://bun.sh/install | bash
 # Change the current working directorysz
-WORKDIR /var/www
-CMD bun install
-CMD composer install
-CMD php artisan key:generate 
+WORKDIR /var/www/html
+RUN bun install
+RUN composer install
+RUN php artisan key:generate 
 # Change the owner of the container document2 root
-COPY --chown=www-data:www-data . /var/www
+COPY --chown=www-data:www-data . /var/www/html
 # Start Apache in foreground
 CMD ["php-fpm"]
