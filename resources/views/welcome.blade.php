@@ -7,7 +7,7 @@
         @vite(["resources/ts/main.ts","resources/css/main.css"])
     </head>
     <body class="antialiased">
-       <h1>Hola mundo</h1>
+       <h1>Hola mundo 3</h1>
        <counter></counter>
     </body>
 </html>
