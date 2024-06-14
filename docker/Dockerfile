@@ -1,24 +1,29 @@
 FROM php:8.1-apache
+# Copy virtual host into container
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+# Enable rewrite mode
+RUN a2enmod rewrite
+
 # Install necessary packages
 RUN apt-get update && \
     apt-get install \
     libzip-dev \
+    libxml2-dev \
     wget \
     git \
-    unzip \ 
-    libxml2-dev \
-    openssl \
+    unzip \
     -y --no-install-recommends
 
 # Install PHP Extensions
 RUN docker-php-ext-install zip pdo_mysql soap
- 
+
 # RUN pecl install -o -f xdebug-3.1.3 \
 #     && rm -rf /tmp/pear
 
 # Copy composer installable
 COPY ./install-composer.sh ./
+
+# Copy php.ini
 COPY ./php.ini /usr/local/etc/php/
 
 # Cleanup packages and install composer
@@ -28,12 +33,14 @@ RUN apt-get purge -y g++ \
     && rm -rf /tmp/* \
     && sh ./install-composer.sh \
     && rm ./install-composer.sh
-RUN curl -fsSL https://bun.sh/install | bash && \
-ln -s $HOME/.bun/bin/bun /usr/local/bin/bun
-# Change the current working directorysz
-WORKDIR /var/www/html
-# Change the owner of the container document2 root
-RUN chmod -R 775 /var/www/html 
-COPY --chown=www-data:www-data . /var/www/html
-
+RUN curl -fsSL https://bun.sh/install | bash
+# Change the current working directory
+WORKDIR /var/www
+CMD bun install
+CMD composer install
+CMD php artisan key:generate 
+CMD chmod 777 storage -R
+# Change the owner of the container document root
+RUN chown -R www-data:www-data /var/www
+# Start Apache in foreground
 CMD ["apache2-foreground"]
