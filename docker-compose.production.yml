@@ -1,15 +1,17 @@
 version: "3.7"
 services:
   app:
-    build:
-      context: ./docker
     volumes:
       - ./:/var/www
+    build:
+      context: .
     depends_on:
       - db
     tty: true
     networks:
       - laravel
+    ports:
+      - "8000:8000"
     environment:
       PORT: ${PORT}
       APP_NAME: ${APP_NAME}
@@ -70,7 +72,7 @@ services:
     tty: true
     volumes:
       - .:/var/www
-      - ./nginx/conf.d:/etc/nginx/conf.d/
+      - ./docker/nginx.conf:/etc/nginx/conf.d/
     networks:
       - laravel
   db:
@@ -91,18 +93,19 @@ services:
     networks:
       - laravel
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      - PMA_ARBITRARY=1
-    ports:
-      - "8080:80"
-    depends_on:
-      - db
-    networks:
-      - laravel
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   container_name: phpmyadmin
+  #   environment:
+  #     - PMA_ARBITRARY=1
+  #   ports:
+  #     - "8080:80"
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - laravel
 networks:
   laravel:
+    driver: bridge
 volumes:
   mysql-data:

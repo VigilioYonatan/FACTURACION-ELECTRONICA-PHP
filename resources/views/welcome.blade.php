@@ -6,7 +6,7 @@
         <title>Laravel</title>
     </head>
     <body class="antialiased">
-       <h1>Hola mundo 3</h1>
+       <h1>Hola mundo 5</h1>
        <counter></counter>
     </body>
 </html>

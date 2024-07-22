@@ -33,7 +33,7 @@ trait SunatTrait
         $body["legends"] = [
             [
                 "code" => "1000",
-                "value" => $formatter->toInvoice($body["mtoImpVenta"], 2, "SOLES")
+                "value" => $formatter->toInvoice($body["mtoImpVenta"], 2, $body["tipoMoneda"] === "PEN" ? "SOLES" : "DOLARES")
             ]
         ];
     }

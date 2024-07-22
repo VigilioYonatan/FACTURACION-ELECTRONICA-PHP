@@ -31,7 +31,6 @@ class InvoiceController extends Controller
         $see = $sunat->getSee($company);
         $invoice = $sunat->getInvoice($body);
         $result = $see->send($invoice);
-
         $response["xml"] = $see->getFactory()->getLastXml();
         $response["hash"] = (new XmlUtils())->getHashSign($response["xml"]);
         $response["sunatResponse"] = $sunat->sunatResponse($result);
@@ -70,7 +69,7 @@ class InvoiceController extends Controller
             "details.*" => "required|array"
         ]);
         $body = $request->all();
-        $type = $request->query("type", "invoice"); 
+        $type = $request->query("type", "invoice");
         // $company = Company::where("ruc", $ruc)->first();
         // if (!$company)
         //     throw new NotFoundHttpException("No se encontró companía con el ruc $ruc");

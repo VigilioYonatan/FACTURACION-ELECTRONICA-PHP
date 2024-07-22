@@ -1,11 +1,6 @@
 FROM php:8.1-fpm
-# Copy virtual host into container
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
-# Enable rewrite mode
-RUN a2enmod rewrite
-
 # Install necessary packages
-RUN apt-get update && \
+RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
     libjpeg-dev \
@@ -13,16 +8,12 @@ RUN apt-get update && \
     locales \
     curl \
     zip \
-    apt-get install \
+    unzip \
+    git \
+    wget \
     libzip-dev \
     libxml2-dev \
-    wget \
-    git \
-    unzip \
-    -y --no-install-recommends
-
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
+    --no-install-recommends && rm -rf /var/lib/apt/lists/*
 # Install PHP Extensions
 RUN docker-php-ext-install zip pdo_mysql soap pcntl bcmath gd
 
@@ -30,10 +21,10 @@ RUN docker-php-ext-install zip pdo_mysql soap pcntl bcmath gd
 #     && rm -rf /tmp/pear
 
 # Copy composer installable
-COPY ./install-composer.sh ./
+COPY ./docker/install-composer.sh ./
 
 # Copy php.ini
-COPY ./php.ini /usr/local/etc/php/
+COPY ./docker/php.ini /usr/local/etc/php/
 
 # Cleanup packages and install composer
 RUN apt-get purge -y g++ \
@@ -44,12 +35,14 @@ RUN apt-get purge -y g++ \
     && rm ./install-composer.sh
 RUN curl -fsSL https://bun.sh/install | bash
 # Change the current working directory
-WORKDIR /var/www
 CMD bun install
 CMD composer install
-COPY --chown=www-data:www-data . /var/www
+WORKDIR /var/www
+COPY ./ /var/www
+# Set permissions
+RUN chown -R www-data:www-data /var/www
+RUN chmod -R 755 /var/www/storage
+RUN chmod -R 755 /var/www/bootstrap/cache
 
-USER www-data
-
-EXPOSE 9000
-CMD ["php-fpm"]
+CMD php artisan serve --host=0.0.0.0 --port=8000
+EXPOSE 8000

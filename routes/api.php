@@ -34,6 +34,8 @@ Route::get("/auth/me", [AuthController::class, "me"]);
 // companies
 Route::apiResource("/companies", CompanyController::class)->middleware("auth:api");
 
+// anular
+Route::post("/cancel/send", [InvoiceController::class, "send"]);
 // invoices
 Route::post("/invoices/send", [InvoiceController::class, "send"]);
 Route::post("/invoices/xml", [InvoiceController::class, "xml"]);
