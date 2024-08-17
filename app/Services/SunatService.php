@@ -23,6 +23,8 @@ use Greenter\Report\HtmlReport;
 use Greenter\Report\Resolver\DefaultTemplateResolver;
 use Greenter\See;
 use Greenter\Ws\Services\SunatEndpoints;
+use Greenter\XMLSecLibs\Certificate\X509Certificate;
+use Greenter\XMLSecLibs\Certificate\X509ContentType;
 
 class SunatService
 {
@@ -51,7 +53,16 @@ class SunatService
     {
         $see = new See();
         // find and get certficate
-        $see->setCertificate(base64_decode($company["certificado"]));
+        // obligado poner certifiaco en .pem
+        if ($company["production"]) {
+
+            $certificate = new X509Certificate(base64_decode($company["certificado"]), $company["certificado_password"]);
+            $see->setCertificate($certificate->export(X509ContentType::PEM));
+        } else {
+            $see->setCertificate(base64_decode($company["certificado"]));
+
+        }
+
         $see->setService($company["production"] ? SunatEndpoints::FE_PRODUCCION : SunatEndpoints::FE_BETA);
         $see->setClaveSOL($company["ruc"], $company["sol_user"], $company["sol_pass"]);
         return $see;

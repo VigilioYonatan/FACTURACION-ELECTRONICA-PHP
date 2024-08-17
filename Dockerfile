@@ -1,5 +1,7 @@
+# Utiliza una imagen base de PHP
 FROM php:8.1-fpm
-# Install necessary packages
+
+# Instala las extensiones y utilidades necesarias de PHP
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -14,35 +16,33 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libxml2-dev \
     --no-install-recommends && rm -rf /var/lib/apt/lists/*
-# Install PHP Extensions
+
+# Instala extensiones de PHP
 RUN docker-php-ext-install zip pdo_mysql soap pcntl bcmath gd
 
-# RUN pecl install -o -f xdebug-3.1.3 \
-#     && rm -rf /tmp/pear
+# Establece el directorio de trabajo
+WORKDIR /var/www
 
-# Copy composer installable
-COPY ./docker/install-composer.sh ./
-
-# Copy php.ini
+# Copia el archivo php.ini personalizado si existe
 COPY ./docker/php.ini /usr/local/etc/php/
 
-# Cleanup packages and install composer
-RUN apt-get purge -y g++ \
-    && apt-get autoremove -y \
-    && rm -r /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && sh ./install-composer.sh \
-    && rm ./install-composer.sh
-RUN curl -fsSL https://bun.sh/install | bash
-# Change the current working directory
-CMD bun install
-CMD composer install
-WORKDIR /var/www
-COPY ./ /var/www
-# Set permissions
-RUN chown -R www-data:www-data /var/www
-RUN chmod -R 755 /var/www/storage
-RUN chmod -R 755 /var/www/bootstrap/cache
+# Copia todos los archivos del proyecto
+COPY . .
 
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# Cambia el propietario de los archivos al usuario www-data
+RUN chown -R www-data:www-data /var/www
+
+# Instala Composer como root
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Cambia al usuario www-data
+USER www-data
+
+# Instala las dependencias de PHP
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Expon el puerto 9000
 EXPOSE 8000
+
+# Comando para iniciar el servidor de PHP
+CMD ["php-fpm"]
