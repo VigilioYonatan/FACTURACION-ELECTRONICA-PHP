@@ -54,12 +54,15 @@ class SunatService
         $see = new See();
         // find and get certficate
         // obligado poner certifiaco en .pem
-        if ($company["production"]) {
-
-            $certificate = new X509Certificate(base64_decode($company["certificado"]), $company["certificado_password"]);
-            $see->setCertificate($certificate->export(X509ContentType::PEM));
+        $decodedContent = base64_decode($company["certificado"]);
+        if (
+            strpos($decodedContent, '-----BEGIN CERTIFICATE-----') !== false &&
+            strpos($decodedContent, '-----END CERTIFICATE-----') !== false
+        ) {
+            $see->setCertificate($decodedContent);
         } else {
-            $see->setCertificate(base64_decode($company["certificado"]));
+            $certificate = new X509Certificate($decodedContent, $company["certificado_password"]);
+            $see->setCertificate($certificate->export(X509ContentType::PEM));
 
         }
 
