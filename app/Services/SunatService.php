@@ -347,7 +347,7 @@ class SunatService
     }
 
 
-    public function getHtmlReport($invoice, $company, $type, $isInvoice = true)
+    public function getHtmlReport($invoice, $company, $type, $isInvoice = true, )
     {
         $report = null;
         if ($type === "ticket" && $isInvoice) {
@@ -365,7 +365,7 @@ class SunatService
 
         $params = [
             'system' => [
-                'logo' => base64_decode($company["logo"])
+                'logo' => str_starts_with($company["logo"], "http") ? $company["logo"] : base64_decode($company["logo"])
                 , // Logo de Empresa
                 'hash' => 'qqnr2dN4p/HmaEA/CJuVGo7dv5g=', // Valor Resumen 
             ],

@@ -65,7 +65,7 @@ class __TwigTemplate_eb40a60102c3232810a621a5bd27830e extends Template
                     <td width=\"100%\" height=\"90\" align=\"center\">
                         <span><img src=\"";
         // line 20
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Greenter\Report\Filter\ImageFilter')->toBase64(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 20, $this->source); })()), "system", [], "any", false, false, false, 20), "logo", [], "any", false, false, false, 20)), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["params"]) || array_key_exists("params", $context) ? $context["params"] : (function () { throw new RuntimeError('Variable "params" does not exist.', 20, $this->source); })()), "system", [], "any", false, false, false, 20), "logo", [], "any", false, false, false, 20), "html", null, true);
         yield "\" height=\"80\" style=\"text-align:center\" border=\"0\"></span>
                     </td>                
                 </tr>
