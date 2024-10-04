@@ -135,6 +135,7 @@ class SunatService
         ;
     }
 
+
     public function getNote($data)
     {
         return (new Note())
@@ -199,7 +200,7 @@ class SunatService
         return (new Client())
             ->setTipoDoc($client["tipoDoc"] ?? null)
             ->setNumDoc($client["numDoc"] ?? null)
-            ->setRznSocial($client["rznSocial"] ?? null);
+            ->setRznSocial($client["rznSocial"] ?? null)->setAddress($this->getAddress($client["address"] ?? null));
     }
     public function getAddress($address)
     {
@@ -210,7 +211,7 @@ class SunatService
             ->setDistrito($address["distrito"] ?? null)
             ->setUrbanizacion($address["urbanizacion"] ?? null)
             ->setDireccion($address["direccion"] ?? null)
-            ->setCodLocal($address["codLocal"] ?? null); // Codigo de establecimiento asignado por SUNAT, 0000 por defecto.
+            ->setCodLocal($address["codLocal"] ?? null)->setCodigoPais($address["codigoPais"] ?? null); // Codigo de establecimiento asignado por SUNAT, 0000 por defecto.
     }
 
     public function getDetails($details)

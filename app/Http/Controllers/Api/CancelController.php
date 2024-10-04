@@ -8,7 +8,7 @@ use App\Traits\SunatTrait;
 use Greenter\Report\XmlUtils;
 use Illuminate\Http\Request;
 
-class InvoiceController extends Controller
+class CancelController extends Controller
 {
     use SunatTrait;
     public function send(Request $request)

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\DespatchController;
+use App\Http\Controllers\Api\ExportacionController;
 use App\Http\Controllers\Api\InvoiceController;
 use App\Http\Controllers\Api\NoteController;
 use App\Http\Controllers\Api\RegisterController;
@@ -41,6 +42,7 @@ Route::post("/cancel/send", [InvoiceController::class, "send"]);
 Route::post("/invoices/send", [InvoiceController::class, "send"]);
 Route::post("/invoices/xml", [InvoiceController::class, "xml"]);
 Route::post("/invoices/pdf", [InvoiceController::class, "pdf"]);
+
 
 // notes
 Route::post("/notes/send", [NoteController::class, "send"]);
