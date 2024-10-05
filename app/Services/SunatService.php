@@ -211,7 +211,7 @@ class SunatService
             ->setDistrito($address["distrito"] ?? null)
             ->setUrbanizacion($address["urbanizacion"] ?? null)
             ->setDireccion($address["direccion"] ?? null)
-            ->setCodLocal($address["codLocal"] ?? null)->setCodigoPais($address["codigoPais"] ?? null); // Codigo de establecimiento asignado por SUNAT, 0000 por defecto.
+            ->setCodLocal($address["codLocal"] ?? null); // Codigo de establecimiento asignado por SUNAT, 0000 por defecto.
     }
 
     public function getDetails($details)
