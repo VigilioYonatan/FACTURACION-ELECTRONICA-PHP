@@ -124,7 +124,7 @@ sudo mv composer.phar /usr/local/bin/composer
 
 ---
 
-## sudo apt install php8.1-soap
+sudo apt install php8.1-soap
 
 php artisan key:generate
 si usas db-php artisan migrate
@@ -134,10 +134,10 @@ si usas db-php artisan migrate
 sudo nano /etc/nginx/sites-available/facturacion
 
 ```ngnix
-  GNU nano 5.4         /etc/nginx/sites-available/facturacion
+    /etc/nginx/sites-available/facturacion
 server {
     listen 80;
-    server_name facturacion.vigilio-services.com www.facturacion.vigilio-servic>
+    server_name facturacion.vigilio-services.com www.facturacion.vigilio-services.com;
 
     root /var/www/facturacion/public;  # Ruta a la carpeta public de Laravel
     index index.php index.html index.htm;
@@ -158,6 +158,7 @@ server {
     }
 }
 ```
+
 sudo ln -s /etc/nginx/sites-available/facturacion /etc/nginx/sites-enabled
 sudo certbot --nginx -d www.facturacion.vigilio-services.com -d facturacion.vigilio-services.com
 sudo chown -R www-data:www-data /var/www/facturacion/app/Services/cache
